@@ -4,8 +4,6 @@ This repository is the sample codebase associated with Cloudflare's tutorial on 
 
 [Check out the full tutorial to build it yourself](), or you can follow the instructions to deploy to your own Cloudflare account.
 
-There are two codebases provided, configured using [NPM's workspace feature](https://docs.npmjs.com/cli/v7/using-npm/workspaces): `frontend`, the front-end user interface, and `worker`, a serverless function for handling form submissions.
-
 This tutorial will show you how to integrate with [Airtable](https://airtable.com/), a Google Sheets-like spreadsheet software. New form submissions will be submitted into an Airtable spreadsheet that you will create in the tutorial.
 
 ## Setup
