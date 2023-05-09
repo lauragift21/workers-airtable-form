@@ -1,3 +1,5 @@
+import { html } from './form.js';
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url)
@@ -33,20 +35,23 @@ export default {
       await createAirtableRecord(env, reqBody);
       return Response.redirect(env.FORM_URL);
     }
-
-    return new Response("Hello Workers!");
+    return new Response(html(), {
+      headers: {
+        "content-type": "text/html;charset=UTF-8",
+      },
+    });
   }
 }
 
 
-const createAirtableRecord = (env, body) => {
+async function createAirtableRecord(env, body) {
   try {
     const result = fetch(`https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(env.AIRTABLE_TABLE_NAME)}`, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: {
         Authorization: `Bearer ${env.AIRTABLE_API_TOKEN}`,
-        'Content-type': `application/json`
+        'Content-Type': 'application/json', 
       }
     })
     return result;
